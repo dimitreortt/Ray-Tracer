@@ -22,7 +22,16 @@ class Rectangle {
 
 class Line {
   type = 'Line';
-  constructor(readonly m: number, readonly c: number) {}
+  constructor(
+    readonly m: number,
+    readonly c: number,
+    directionVector: Vector
+  ) {}
+}
+
+class LineSegment {
+  type = 'LineSegment';
+  constructor(readonly start: Point, readonly finish: Point) {}
 }
 
 class Vector {
