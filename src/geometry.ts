@@ -42,6 +42,12 @@ const vectorTimesNumber = (vector: Vector, number: number): Vector => {
   return new Vector(vector.x * number, vector.y * number);
 };
 
+const findVersor = (vector: Vector) => {
+  const magnitude = Math.sqrt(Math.pow(vector.x, 2) + Math.pow(vector.y, 2));
+  const versor = new Vector(vector.x / magnitude, vector.y / magnitude);
+  return versor;
+};
+
 // const findLineSegmentUntilBorder = (
 //   point: Point,
 //   line: Line,
