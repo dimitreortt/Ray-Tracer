@@ -1,15 +1,9 @@
-function getCanvasContext(canvasId: string) {
-  const canva: any = document.getElementById(canvasId);
-  const context = canva!.getContext('2d');
-  return context;
-}
-
 class CanvasDrawer {
-  context: any;
+  context: CanvasRenderingContext2D;
 
-  constructor(canvasId: string) {
-    const context = getCanvasContext(canvasId);
-    this.context = context;
+  constructor(readonly canvas: HTMLCanvasElement) {
+    const context = canvas.getContext('2d');
+    this.context = context!;
   }
 
   drawCircle(circle: Circle) {
@@ -36,20 +30,6 @@ class CanvasDrawer {
     this.drawRectangle(
       new Rectangle(start, new Point(start.x + side, start.y + side))
     );
-    // this.drawLine(new LineSegment(start, new Point(start.x + side, start.y)));
-    // this.drawLine(
-    //   new LineSegment(
-    //     new Point(start.x + side, start.y),
-    //     new Point(start.x + side, start.y + side)
-    //   )
-    // );
-    // this.drawLine(
-    //   new LineSegment(
-    //     new Point(start.x + side, start.y + side),
-    //     new Point(start.x, start.y + side)
-    //   )
-    // );
-    // this.drawLine(new LineSegment(new Point(start.x, start.y + side), start));
   }
 
   drawRectangle(rectangle: Rectangle) {
@@ -66,7 +46,6 @@ class CanvasDrawer {
   }
 
   drawShapes(shapes: Shape[]) {
-    console.log(shapes);
     for (const shape of shapes) {
       console.log(shape);
       switch (shape.type) {
@@ -89,5 +68,9 @@ class CanvasDrawer {
           break;
       }
     }
+  }
+
+  clearDraws() {
+    this.context.clearRect();
   }
 }

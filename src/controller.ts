@@ -1,8 +1,10 @@
 class Controller {
-  constructor(readonly drawer: CanvasDrawer) {}
+  temporaryShapes: Shape[] = [];
+
+  constructor(readonly drawer: CanvasDrawer, readonly initialShapes: Shape[]) {}
 
   handleClick(clickedPoint: Point) {
-    console.log('oi');
+    this.temporaryShapes = [clickedPoint];
     this.drawer.drawPoint(clickedPoint);
   }
 }
