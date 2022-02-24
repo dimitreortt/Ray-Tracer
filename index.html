@@ -19,8 +19,8 @@
   <script src="./js/geometry.js"></script>
   <script src="./js/controller.js"></script>
   <script>
-    const canvasId = 'space-square';
-    const drawer = new CanvasDrawer(canvasId);
+    const canvas = document.getElementById('space-square');
+    const drawer = new CanvasDrawer(canvas);
 
     const center = new Point(150, 150);
     const radius = 100;
@@ -40,7 +40,7 @@
 
     drawer.drawShapes(initialShapes);
 
-    const controller = new Controller(drawer);
+    const controller = new Controller(drawer, initialShapes);
 
     document.onmousedown = function (e) {
       const mouseX = e.clientX;

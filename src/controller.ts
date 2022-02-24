@@ -5,6 +5,8 @@ class Controller {
 
   handleClick(clickedPoint: Point) {
     this.temporaryShapes = [clickedPoint];
-    this.drawer.drawPoint(clickedPoint);
+    // this.drawer.drawPoint(clickedPoint);
+    this.drawer.clearDraws();
+    this.drawer.drawShapes(this.initialShapes.concat(this.temporaryShapes));
   }
 }

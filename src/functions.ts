@@ -47,7 +47,6 @@ class CanvasDrawer {
 
   drawShapes(shapes: Shape[]) {
     for (const shape of shapes) {
-      console.log(shape);
       switch (shape.type) {
         case 'Circle':
           this.drawCircle(shape as Circle);
@@ -71,6 +70,8 @@ class CanvasDrawer {
   }
 
   clearDraws() {
-    this.context.clearRect();
+    const width = this.canvas.width;
+    const height = this.canvas.height;
+    this.context.clearRect(0, 0, width, height);
   }
 }
