@@ -43,4 +43,8 @@ class CanvasDrawer {
     this.drawLine(finish, new Point(finish.x, start.y));
     this.drawLine(new Point(finish.x, start.y), start);
   }
+
+  drawPoint(position: Point) {
+    this.drawCircle(position, 2);
+  }
 }

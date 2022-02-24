@@ -7,6 +7,32 @@
     <title>Document</title>
   </head>
   <body>
-    <canvas width="700" height="600" style="border: 1px solid #000"></canvas>
+    <canvas
+      id="space-square"
+      width="700"
+      height="600"
+      style="border: 1px solid #000"
+    ></canvas>
   </body>
+  <script src="./js/functions.js"></script>
+  <script src="./js/geometry.js"></script>
+  <script>
+    const canvasId = 'space-square';
+    const drawer = new CanvasDrawer(canvasId);
+
+    const center = new Point(150, 150);
+    const radius = 100;
+    drawer.drawCircle(center, radius);
+
+    const start = new Point(350, 50);
+    const side = 150;
+    drawer.drawSquare(start, side);
+
+    const recStart = new Point(400, 300);
+    const recFinish = new Point(450, 500);
+    drawer.drawRectangle(recStart, recFinish);
+
+    const observerPoint = new Point(200, 450);
+    drawer.drawPoint(observerPoint);
+  </script>
 </html>
