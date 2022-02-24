@@ -25,7 +25,7 @@ class Line {
   constructor(
     readonly m: number,
     readonly c: number,
-    directionVector: Vector
+    readonly directionVector: Vector
   ) {}
 }
 
@@ -37,3 +37,13 @@ class LineSegment {
 class Vector {
   constructor(readonly x: number, readonly y: number) {}
 }
+
+const vectorTimesNumber = (vector: Vector, number: number): Vector => {
+  return new Vector(vector.x * number, vector.y * number);
+};
+
+// const findLineSegmentUntilBorder = (
+//   point: Point,
+//   line: Line,
+//   canvas: HTMLCanvasElement
+// ): LineSegment => {};

@@ -8,5 +8,8 @@ class Controller {
     // this.drawer.drawPoint(clickedPoint);
     this.drawer.clearDraws();
     this.drawer.drawShapes(this.initialShapes.concat(this.temporaryShapes));
+
+    // find line or linesegment from clicked point until border
+    // draw this line as temporary
   }
 }
