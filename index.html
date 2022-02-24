@@ -34,5 +34,11 @@
 
     const observerPoint = new Point(200, 450);
     drawer.drawPoint(observerPoint);
+
+    document.onmousedown = function (e) {
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+      handleClick(new Point(mouseX, mouseY));
+    };
   </script>
 </html>
