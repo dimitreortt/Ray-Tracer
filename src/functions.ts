@@ -36,4 +36,11 @@ class CanvasDrawer {
     );
     this.drawLine(new Point(start.x, start.y + side), start);
   }
+
+  drawRectangle(start: Point, finish: Point) {
+    this.drawLine(start, new Point(start.x, finish.y));
+    this.drawLine(new Point(start.x, finish.y), finish);
+    this.drawLine(finish, new Point(finish.x, start.y));
+    this.drawLine(new Point(finish.x, start.y), start);
+  }
 }
