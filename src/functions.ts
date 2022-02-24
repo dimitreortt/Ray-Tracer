@@ -11,4 +11,10 @@ class CanvasDrawer {
     const context = getCanvasContext(canvasId);
     this.context = context;
   }
+
+  drawCircle(center: Point, radius: number) {
+    this.context.beginPath();
+    this.context.arc(center.x, center.y, radius, 0, 2 * Math.PI);
+    this.context.stroke();
+  }
 }
