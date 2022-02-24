@@ -48,8 +48,34 @@ const findVersor = (vector: Vector) => {
   return versor;
 };
 
-// const findLineSegmentUntilBorder = (
-//   point: Point,
-//   line: Line,
-//   canvas: HTMLCanvasElement
-// ): LineSegment => {};
+const hipotenuse = (opositeCatet: number, adjacentCatet: number): number => {
+  return Math.sqrt(opositeCatet * opositeCatet + adjacentCatet * adjacentCatet);
+};
+
+const makeVector = (p1: Point, p2: Point) => {
+  return new Vector(p2.x - p1.x, p2.y - p1.y);
+};
+
+const findLineFromPoints = (p1: Point, p2: Point) => {
+  const m = (p1.y - p2.y) / (p1.x - p2.x);
+  const c = m * p1.x * -1 + p1.y;
+  const direction = makeVector(p1, p2);
+  return new Line(m, c, direction);
+};
+
+const findLineSegmentUntilBorder = (
+  point: Point,
+  line: Line,
+  canvas: HTMLCanvasElement
+): LineSegment => {
+  const directionVersor = findVersor(line.directionVector);
+  const areaDiagonal = hipotenuse(canvas.width, canvas.height);
+  const distanceVector = vectorTimesNumber(directionVersor, areaDiagonal);
+
+  const distancePoint = new Point(
+    point.x + distanceVector.x,
+    point.y + distanceVector.y
+  );
+
+  return new LineSegment(point, distancePoint);
+};
