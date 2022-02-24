@@ -1,4 +1,4 @@
-type Shape = Point | Square | Circle | Rectangle;
+type Shape = Point | Square | Circle | Rectangle | LineSegment;
 
 class Point {
   type = 'Point';

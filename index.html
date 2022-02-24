@@ -37,10 +37,7 @@
 
     const initialShapes = [circle, square, rectangle, observerPoint];
 
-    drawer.drawCircle(center, radius);
-    drawer.drawSquare(start, side);
-    drawer.drawRectangle(recStart, recFinish);
-    drawer.drawPoint(observerPoint);
+    drawer.drawShapes(initialShapes);
 
     document.onmousedown = function (e) {
       const mouseX = e.clientX;

@@ -33,20 +33,23 @@ class CanvasDrawer {
   drawSquare(square: Square) {
     const start = square.start;
     const side = square.side;
-    this.drawLine(new LineSegment(start, new Point(start.x + side, start.y)));
-    this.drawLine(
-      new LineSegment(
-        new Point(start.x + side, start.y),
-        new Point(start.x + side, start.y + side)
-      )
+    this.drawRectangle(
+      new Rectangle(start, new Point(start.x + side, start.y + side))
     );
-    this.drawLine(
-      new LineSegment(
-        new Point(start.x + side, start.y + side),
-        new Point(start.x, start.y + side)
-      )
-    );
-    this.drawLine(new LineSegment(new Point(start.x, start.y + side), start));
+    // this.drawLine(new LineSegment(start, new Point(start.x + side, start.y)));
+    // this.drawLine(
+    //   new LineSegment(
+    //     new Point(start.x + side, start.y),
+    //     new Point(start.x + side, start.y + side)
+    //   )
+    // );
+    // this.drawLine(
+    //   new LineSegment(
+    //     new Point(start.x + side, start.y + side),
+    //     new Point(start.x, start.y + side)
+    //   )
+    // );
+    // this.drawLine(new LineSegment(new Point(start.x, start.y + side), start));
   }
 
   drawRectangle(rectangle: Rectangle) {
@@ -63,7 +66,9 @@ class CanvasDrawer {
   }
 
   drawShapes(shapes: Shape[]) {
+    console.log(shapes);
     for (const shape of shapes) {
+      console.log(shape);
       switch (shape.type) {
         case 'Circle':
           this.drawCircle(shape as Circle);
