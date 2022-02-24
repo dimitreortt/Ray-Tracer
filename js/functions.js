@@ -19,4 +19,10 @@ class CanvasDrawer {
         this.context.lineTo(finish.x, finish.y);
         this.context.stroke();
     }
+    drawSquare(start, side) {
+        this.drawLine(start, new Point(start.x + side, start.y));
+        this.drawLine(new Point(start.x + side, start.y), new Point(start.x + side, start.y + side));
+        this.drawLine(new Point(start.x + side, start.y + side), new Point(start.x, start.y + side));
+        this.drawLine(new Point(start.x, start.y + side), start);
+    }
 }
