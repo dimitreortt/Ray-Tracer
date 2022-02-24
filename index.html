@@ -23,17 +23,23 @@
 
     const center = new Point(150, 150);
     const radius = 100;
-    drawer.drawCircle(center, radius);
+    const circle = new Circle(center, radius);
 
     const start = new Point(350, 50);
     const side = 150;
-    drawer.drawSquare(start, side);
+    const square = new Square(start, side);
 
     const recStart = new Point(400, 300);
     const recFinish = new Point(450, 500);
-    drawer.drawRectangle(recStart, recFinish);
+    const rectangle = new Rectangle(recStart, recFinish);
 
     const observerPoint = new Point(200, 450);
+
+    const initialShapes = [circle, square, rectangle, observerPoint];
+
+    drawer.drawCircle(center, radius);
+    drawer.drawSquare(start, side);
+    drawer.drawRectangle(recStart, recFinish);
     drawer.drawPoint(observerPoint);
 
     document.onmousedown = function (e) {

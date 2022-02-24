@@ -12,39 +12,77 @@ class CanvasDrawer {
     this.context = context;
   }
 
-  drawCircle(center: Point, radius: number) {
+  drawCircle(circle: Circle) {
     this.context.beginPath();
-    this.context.arc(center.x, center.y, radius, 0, 2 * Math.PI);
+    this.context.arc(
+      circle.center.x,
+      circle.center.y,
+      circle.radius,
+      0,
+      2 * Math.PI
+    );
     this.context.stroke();
   }
 
-  drawLine(start: Point, finish: Point) {
-    this.context.moveTo(start.x, start.y);
-    this.context.lineTo(finish.x, finish.y);
+  drawLine(line: LineSegment) {
+    this.context.moveTo(line.start.x, line.start.y);
+    this.context.lineTo(line.finish.x, line.finish.y);
     this.context.stroke();
   }
 
-  drawSquare(start: Point, side: number) {
-    this.drawLine(start, new Point(start.x + side, start.y));
+  drawSquare(square: Square) {
+    const start = square.start;
+    const side = square.side;
+    this.drawLine(new LineSegment(start, new Point(start.x + side, start.y)));
     this.drawLine(
-      new Point(start.x + side, start.y),
-      new Point(start.x + side, start.y + side)
+      new LineSegment(
+        new Point(start.x + side, start.y),
+        new Point(start.x + side, start.y + side)
+      )
     );
     this.drawLine(
-      new Point(start.x + side, start.y + side),
-      new Point(start.x, start.y + side)
+      new LineSegment(
+        new Point(start.x + side, start.y + side),
+        new Point(start.x, start.y + side)
+      )
     );
-    this.drawLine(new Point(start.x, start.y + side), start);
+    this.drawLine(new LineSegment(new Point(start.x, start.y + side), start));
   }
 
-  drawRectangle(start: Point, finish: Point) {
-    this.drawLine(start, new Point(start.x, finish.y));
-    this.drawLine(new Point(start.x, finish.y), finish);
-    this.drawLine(finish, new Point(finish.x, start.y));
-    this.drawLine(new Point(finish.x, start.y), start);
+  drawRectangle(rectangle: Rectangle) {
+    const start = rectangle.start;
+    const finish = rectangle.finish;
+    this.drawLine(new LineSegment(start, new Point(start.x, finish.y)));
+    this.drawLine(new LineSegment(new Point(start.x, finish.y), finish));
+    this.drawLine(new LineSegment(finish, new Point(finish.x, start.y)));
+    this.drawLine(new LineSegment(new Point(finish.x, start.y), start));
   }
 
   drawPoint(position: Point) {
-    this.drawCircle(position, 2);
+    this.drawCircle(new Circle(position, 2));
+  }
+
+  drawShapes(shapes: Shape[]) {
+    for (const shape of shapes) {
+      switch (shape.type) {
+        case 'Circle':
+          this.drawCircle(shape as Circle);
+          break;
+        case 'Square':
+          this.drawSquare(shape as Square);
+          break;
+        case 'Rectangle':
+          this.drawRectangle(shape as Rectangle);
+          break;
+        case 'LineSegment':
+          this.drawLine(shape as LineSegment);
+          break;
+        case 'Point':
+          this.drawPoint(shape as Point);
+          break;
+        default:
+          break;
+      }
+    }
   }
 }
