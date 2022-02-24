@@ -30,7 +30,7 @@ class Line {
 }
 
 class LineSegment {
-  type = 'LineSegment';
+  type = 'LineSegmentt';
   constructor(readonly start: Point, readonly finish: Point) {}
 }
 
