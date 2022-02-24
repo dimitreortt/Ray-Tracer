@@ -24,3 +24,7 @@ class Line {
   type = 'Line';
   constructor(readonly m: number, readonly c: number) {}
 }
+
+class Vector {
+  constructor(readonly x: number, readonly y: number) {}
+}
