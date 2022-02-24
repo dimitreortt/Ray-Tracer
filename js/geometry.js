@@ -8,3 +8,10 @@ class Point {
         this.type = 'Point';
     }
 }
+class Square {
+    constructor(start, side) {
+        this.start = start;
+        this.side = side;
+        this.type = 'Square';
+    }
+}
