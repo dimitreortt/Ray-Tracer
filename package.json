@@ -1,0 +1,25 @@
+{
+  "name": "ray-tracer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "main": "tsc-watch --noClear -p ./tsconfig.json",
+    "tsc-init": "tsc --init"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/dimitreortt/Ray-Tracer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dimitreortt/Ray-Tracer/issues"
+  },
+  "homepage": "https://github.com/dimitreortt/Ray-Tracer#readme",
+  "dependencies": {
+    "tsc-watch": "^4.6.0",
+    "typescript": "^4.5.5"
+  }
+}
