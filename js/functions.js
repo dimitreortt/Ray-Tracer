@@ -14,4 +14,9 @@ class CanvasDrawer {
         this.context.arc(center.x, center.y, radius, 0, 2 * Math.PI);
         this.context.stroke();
     }
+    drawLine(start, finish) {
+        this.context.moveTo(start.x, start.y);
+        this.context.lineTo(finish.x, finish.y);
+        this.context.stroke();
+    }
 }
