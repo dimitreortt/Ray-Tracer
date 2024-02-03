@@ -6,6 +6,14 @@ class CanvasDrawer {
     this.context = context!;
   }
 
+  setLightStroke() {
+    this.context.strokeStyle = '#E6D14C';
+  }
+
+  setDefaultStroke() {
+    this.context.strokeStyle = '#000000';
+  }
+
   drawCircle(circle: Circle) {
     this.context.beginPath();
     this.context.arc(
