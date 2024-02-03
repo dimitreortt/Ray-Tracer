@@ -149,18 +149,22 @@ const lineSegmentsIntersection = (segment1: LineSegment, segment2: LineSegment) 
 const squareIntersectsWithRay = (square: Square, line: LineSegment) => {
     // intersects with top? 
     const topSegment = new LineSegment(square.start, new Point(square.start.x + square.side, square.start.y));
-
     // console.log(lineSegmentsIntersection(topSegment, line))
-
 
     // intersects with right?
     const rightSegment = new LineSegment(new Point(square.start.x + square.side, square.start.y), new Point(square.start.x + square.side, square.start.y + square.side));
-    console.log(lineSegmentsIntersection(rightSegment, line))
-    
+    // console.log(lineSegmentsIntersection(rightSegment, line))
 
     // intersects with bottom?
-    
+    const bottomSegment = new LineSegment(new Point(square.start.x, square.start.y + square.side), new Point(square.start.x + square.side, square.start.y + square.side));
+    // console.log(lineSegmentsIntersection(bottomSegment, line))
+
     // intersects with left?
+    const leftSegment = new LineSegment(new Point(square.start.x, square.start.y), new Point(square.start.x, square.start.y + square.side));
+    // console.log(lineSegmentsIntersection(leftSegment, line))
 
-
+    return lineSegmentsIntersection(topSegment, line) ||
+          lineSegmentsIntersection(rightSegment, line) ||
+          lineSegmentsIntersection(bottomSegment, line) ||
+          lineSegmentsIntersection(leftSegment, line)
 }
