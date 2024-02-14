@@ -46,6 +46,11 @@ class Controller {
         const intersection = shape.intersectsWithRay(lineToBorder)
         if (intersection) this.drawer.drawPoint(intersection)
       }
+      
+      if (shape.type === 'Circle') {
+        const intersection = shape.intersectsWithRay(lineToBorder)
+        if (intersection) this.drawer.drawPoint(intersection)
+      }
     }
     // calculate the closest point that intersects
   }

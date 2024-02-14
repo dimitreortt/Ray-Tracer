@@ -12,10 +12,10 @@
 //   constructor(readonly start: Point, readonly side: number) {}
 // }
 
-class Circle {
-  type = 'Circle';
-  constructor(readonly center: Point, readonly radius: number) {}
-}
+// class Circle {
+//   type = 'Circle';
+//   constructor(readonly center: Point, readonly radius: number) {}
+// }
 
 // class Rectangle {
 //   type = 'Rectangle';
@@ -143,6 +143,8 @@ const lineSegmentsIntersection = (segment1: LineSegment, segment2: LineSegment) 
   if (intersection) {
     return checkPointInLineSegment(intersection, segment1) && checkPointInLineSegment(intersection, segment2) ? intersection : null
   }
+
+  return null
 }
 
 const squareIntersectsWithRay = (square: Square, line: LineSegment) => {

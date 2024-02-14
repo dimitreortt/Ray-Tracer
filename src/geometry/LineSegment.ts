@@ -6,4 +6,21 @@ class LineSegment implements Shape {
         
         return null
     }
+
+    findPointNearestToStart(points: (Point|null)[]){
+        let distanceToStart: null | number = null
+        let closestPoint : Point | null = null;
+
+        points.forEach((point) => {
+            if (point) {
+                const distance = point.distanceToPoint(this.start);
+                if (!distanceToStart || distance < distanceToStart) {
+                    distanceToStart = distance
+                    closestPoint = point
+                }
+            }
+        })
+
+        return closestPoint
+    }
   }

@@ -16,20 +16,7 @@ class Rectangle implements Shape {
 
         const leftSegment = new LineSegment(new Point(rectangle.start.x, rectangle.finish.y), rectangle.start);
         const leftSegmentIntersection = lineSegmentsIntersection(leftSegment, ray)
-        
-        let distanceToOrigin: null | number = null;
-        let closestIntersection : Point | null = null;
 
-        [topSegmentIntersection, rightSegmentIntersection, bottomSegmentIntersection, leftSegmentIntersection].forEach((intersection) => {
-            if (intersection) {
-                const distance = intersection.distanceToPoint(ray.start);
-                if (!distanceToOrigin || distance < distanceToOrigin) {
-                    distanceToOrigin = distance
-                    closestIntersection = intersection
-                }
-            }
-        })
-
-        return closestIntersection
+        return ray.findPointNearestToStart([topSegmentIntersection, rightSegmentIntersection, bottomSegmentIntersection, leftSegmentIntersection])
     }
 }
