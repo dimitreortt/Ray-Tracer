@@ -17,10 +17,10 @@ class Circle {
   constructor(readonly center: Point, readonly radius: number) {}
 }
 
-class Rectangle {
-  type = 'Rectangle';
-  constructor(readonly start: Point, readonly finish: Point) {}
-}
+// class Rectangle {
+//   type = 'Rectangle';
+//   constructor(readonly start: Point, readonly finish: Point) {}
+// }
 
 class Line {
   type = 'Line';

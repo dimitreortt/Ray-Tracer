@@ -15,7 +15,6 @@ class Controller {
   }
 
   shootRay() {
-    console.log('oasidh')
     const p1 = this.initialShapes[this.initialShapes.length - 1]
     const p2 = this.temporaryShapes[0]
 
@@ -38,7 +37,12 @@ class Controller {
     for (const shape of this.initialShapes) {
       // check if shape is intersected by the 
       if (shape.type === 'Square') {
-        console.log('here')
+        // console.log('here')
+        const intersection = shape.intersectsWithRay(lineToBorder)
+        if (intersection) this.drawer.drawPoint(intersection)
+      }
+
+      if (shape.type === 'Rectangle') {
         const intersection = shape.intersectsWithRay(lineToBorder)
         if (intersection) this.drawer.drawPoint(intersection)
       }
