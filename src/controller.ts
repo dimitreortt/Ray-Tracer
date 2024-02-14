@@ -15,6 +15,7 @@ class Controller {
   }
 
   shootRay() {
+    console.log('oasidh')
     const p1 = this.initialShapes[this.initialShapes.length - 1]
     const p2 = this.temporaryShapes[0]
 
@@ -32,14 +33,16 @@ class Controller {
     this.drawer.setDefaultStroke()
 
 
+
     // check which points intersect with the ray
     for (const shape of this.initialShapes) {
       // check if shape is intersected by the 
       if (shape.type === 'Square') {
-        const intersection = squareIntersectsWithRay((shape as Square), lineToBorder)
+        console.log('here')
+        const intersection = shape.intersectsWithRay(lineToBorder)
+        if (intersection) this.drawer.drawPoint(intersection)
       }
     }
-
     // calculate the closest point that intersects
   }
 }

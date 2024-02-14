@@ -1,14 +1,16 @@
-type Shape = Point | Square | Circle | Rectangle | LineSegment;
+// type Shape = Point | Square | Circle | Rectangle | LineSegment;
 
-class Point {
-  type = 'Point';
-  constructor(readonly x: number, readonly y: number) {}
-}
 
-class Square {
-  type = 'Square';
-  constructor(readonly start: Point, readonly side: number) {}
-}
+
+// class Point {
+//   type = 'Point';
+//   constructor(readonly x: number, readonly y: number) {}
+// }
+
+// class Square {
+//   type = 'Square';
+//   constructor(readonly start: Point, readonly side: number) {}
+// }
 
 class Circle {
   type = 'Circle';
@@ -29,10 +31,7 @@ class Line {
   ) {}
 }
 
-class LineSegment {
-  type = 'LineSegmentt';
-  constructor(readonly start: Point, readonly finish: Point) {}
-}
+
 
 class Vector {
   constructor(readonly x: number, readonly y: number) {}
