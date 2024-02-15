@@ -1,37 +1,11 @@
-// type Shape = Point | Square | Circle | Rectangle | LineSegment;
-
-
-
-// class Point {
-//   type = 'Point';
-//   constructor(readonly x: number, readonly y: number) {}
+// class Line {
+//   type = 'Line';
+//   constructor(
+//     readonly m: number | null, // null for vertical lines
+//     readonly c: number,
+//     readonly directionVector: Vector
+//   ) {}
 // }
-
-// class Square {
-//   type = 'Square';
-//   constructor(readonly start: Point, readonly side: number) {}
-// }
-
-// class Circle {
-//   type = 'Circle';
-//   constructor(readonly center: Point, readonly radius: number) {}
-// }
-
-// class Rectangle {
-//   type = 'Rectangle';
-//   constructor(readonly start: Point, readonly finish: Point) {}
-// }
-
-class Line {
-  type = 'Line';
-  constructor(
-    readonly m: number | null, // null for vertical lines
-    readonly c: number,
-    readonly directionVector: Vector
-  ) {}
-}
-
-
 
 class Vector {
   constructor(readonly x: number, readonly y: number) {}
@@ -93,6 +67,7 @@ const isVerticalLine = (line: Line) => {
 }
 
 const lineIntersection = (line1: Line, line2: Line) => {
+    console.log(line1, line2)
     // vertical lines have no intersection
     if (isVerticalLine(line1) && isVerticalLine(line2)) {
       return null
@@ -131,41 +106,4 @@ const checkValueInLineSegmentAxis = (point: Point, segment: LineSegment, axis: '
 
 const checkPointInLineSegment = (point: Point, segment: LineSegment) => {
   return checkValueInLineSegmentAxis(point,  segment, "x") && checkValueInLineSegmentAxis(point, segment, "y");
-}
-
-const lineSegmentsIntersection = (segment1: LineSegment, segment2: LineSegment) => {
-  const l1 = findLineFromSegment(segment1)
-  const l2 = findLineFromSegment(segment2)
-
-  const intersection = lineIntersection(l1, l2)
-
-  // if both lines are vertical, there is no intersection
-  if (intersection) {
-    return checkPointInLineSegment(intersection, segment1) && checkPointInLineSegment(intersection, segment2) ? intersection : null
-  }
-
-  return null
-}
-
-const squareIntersectsWithRay = (square: Square, line: LineSegment) => {
-    // intersects with top? 
-    const topSegment = new LineSegment(square.start, new Point(square.start.x + square.side, square.start.y));
-    // console.log(lineSegmentsIntersection(topSegment, line))
-
-    // intersects with right?
-    const rightSegment = new LineSegment(new Point(square.start.x + square.side, square.start.y), new Point(square.start.x + square.side, square.start.y + square.side));
-    // console.log(lineSegmentsIntersection(rightSegment, line))
-
-    // intersects with bottom?
-    const bottomSegment = new LineSegment(new Point(square.start.x, square.start.y + square.side), new Point(square.start.x + square.side, square.start.y + square.side));
-    // console.log(lineSegmentsIntersection(bottomSegment, line))
-
-    // intersects with left?
-    const leftSegment = new LineSegment(new Point(square.start.x, square.start.y), new Point(square.start.x, square.start.y + square.side));
-    // console.log(lineSegmentsIntersection(leftSegment, line))
-
-    return lineSegmentsIntersection(topSegment, line) ||
-          lineSegmentsIntersection(rightSegment, line) ||
-          lineSegmentsIntersection(bottomSegment, line) ||
-          lineSegmentsIntersection(leftSegment, line)
 }

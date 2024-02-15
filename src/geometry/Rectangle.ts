@@ -6,16 +6,16 @@ class Rectangle implements Shape {
         const rectangle = this
 
         const topSegment = new LineSegment(rectangle.start, new Point(rectangle.finish.x, rectangle.start.y));
-        const topSegmentIntersection = lineSegmentsIntersection(topSegment, ray)
+        const topSegmentIntersection = ray.lineSegmentsIntersection(topSegment)
     
         const rightSegment = new LineSegment(new Point(rectangle.finish.x, rectangle.start.y), rectangle.finish);
-        const rightSegmentIntersection = lineSegmentsIntersection(rightSegment, ray)
+        const rightSegmentIntersection = ray.lineSegmentsIntersection(rightSegment)
     
         const bottomSegment = new LineSegment(rectangle.finish, new Point(rectangle.start.x, rectangle.finish.y));
-        const bottomSegmentIntersection = lineSegmentsIntersection(bottomSegment, ray)
+        const bottomSegmentIntersection = ray.lineSegmentsIntersection(bottomSegment)
 
         const leftSegment = new LineSegment(new Point(rectangle.start.x, rectangle.finish.y), rectangle.start);
-        const leftSegmentIntersection = lineSegmentsIntersection(leftSegment, ray)
+        const leftSegmentIntersection = ray.lineSegmentsIntersection(leftSegment)
 
         return ray.findPointNearestToStart([topSegmentIntersection, rightSegmentIntersection, bottomSegmentIntersection, leftSegmentIntersection])
     }

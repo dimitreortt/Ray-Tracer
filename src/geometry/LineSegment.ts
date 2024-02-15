@@ -23,4 +23,19 @@ class LineSegment implements Shape {
 
         return closestPoint
     }
-  }
+
+    lineSegmentsIntersection(otherSegment: LineSegment){
+        const l1 = findLineFromSegment(this)
+        const l2 = findLineFromSegment(otherSegment)
+      
+        const intersection = lineIntersection(l1,l2)
+        // const intersection2 = l1.lineIntersection(l1)
+      
+        // if both lines are vertical, there is no intersection
+        if (intersection) {
+          return checkPointInLineSegment(intersection, this) && checkPointInLineSegment(intersection, otherSegment) ? intersection : null
+        }
+      
+        return null
+    }
+}
