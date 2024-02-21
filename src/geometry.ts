@@ -7,9 +7,9 @@
 //   ) {}
 // }
 
-class Vector {
-  constructor(readonly x: number, readonly y: number) {}
-}
+// class Vector {
+//   constructor(readonly x: number, readonly y: number) {}
+// }
 
 const vectorTimesNumber = (vector: Vector, number: number): Vector => {
   return new Vector(vector.x * number, vector.y * number);
@@ -67,7 +67,6 @@ const isVerticalLine = (line: Line) => {
 }
 
 const lineIntersection = (line1: Line, line2: Line) => {
-    console.log(line1, line2)
     // vertical lines have no intersection
     if (isVerticalLine(line1) && isVerticalLine(line2)) {
       return null
