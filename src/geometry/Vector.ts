@@ -56,6 +56,37 @@ class Vector {
     }
 
     reflect(normal: Vector): Vector{
-        return new Vector(0, 0) // dummy
+        let angle = radiansToDegrees(normal.angleBetweenClockwise(this))
+        if (angle < 0) {
+          angle = 360 + angle
+        }
+
+        if (angle > 90 && angle < 180) {
+            // descubra -in e faça rotate (n, -in) clockwise
+            const inverseI = new Vector(-this.x, -this.y)
+            const inverseIN = inverseI.angleBetweenClockwise(normal)
+            const reflexion = normal.rotate(inverseIN)
+            return reflexion
+        } else if (angle > 180 && angle < 270) {
+            // descubra ni e faça rotate (n, ni) counterclockwise
+            const inverseI = new Vector(-this.x, -this.y)
+            const nInverseI = normal.angleBetweenClockwise(inverseI)
+            const reflexion = normal.rotate(-nInverseI)
+            return reflexion
+        } else {
+            throw new Error("Angle between normal and vector is not in the expected range")
+        }
+    }
+
+    versor(){
+        return new Vector(this.x / this.magnitude(), this.y / this.magnitude());
+    }
+
+    static fromPoints(p1: Point, p2: Point) {
+        return new Vector(p1.x - p2.x, p1.y - p2.y)
+    }
+
+    static fromLineSegment(line: LineSegment) {
+        return this.fromPoints(line.finish, line.start)
     }
 }
