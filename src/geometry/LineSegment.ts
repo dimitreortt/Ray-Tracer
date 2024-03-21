@@ -1,13 +1,12 @@
 class LineSegment implements Shape {
-    type = 'LineSegmentt';
+    type = 'LineSegment';
     constructor(readonly start: Point, readonly finish: Point) {}
 
-    intersectsWithRay(ray: LineSegment): Point | null {
-        
+    intersectsWithRay(ray: Ray): RayIntersection | null {
         return null
     }
 
-    findPointNearestToStart(points: (Point|null)[]){
+    findPointNearestToStart(points: (Point|null)[]): Point | null{
         let distanceToStart: null | number = null
         let closestPoint : Point | null = null;
 

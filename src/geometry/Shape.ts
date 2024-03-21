@@ -1,4 +1,4 @@
 interface Shape {
     type: string
-    intersectsWithRay(ray: LineSegment): Point | null
+    intersectsWithRay(ray: Ray): RayIntersection | null
 }

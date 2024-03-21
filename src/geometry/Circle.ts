@@ -2,20 +2,24 @@ class Circle implements Shape {
     type = 'Circle';
     constructor(readonly center: Point, readonly radius: number) {}
 
-    intersectsWithRay(ray: LineSegment): Point | null {
-        const result = this.findIntersectionWithLineSegment(ray.start, ray.finish)
+    intersectsWithRay(ray: Ray): RayIntersection | null {
+        const rayLineSegment = ray.toLineSegment()
+        const result = this.findIntersectionWithLineSegment(rayLineSegment)
         if (result) {
-            const closestIntersection = ray.findPointNearestToStart(result)
-            return closestIntersection
+            const closestIntersection = rayLineSegment.findPointNearestToStart(result)
+            const rayIntersection = new RayIntersection(ray, closestIntersection!, Vector.fromPoints(closestIntersection!, this.center))
+            return rayIntersection
         }
         return null
     }
 
-    findIntersectionWithLineSegment(pointA: Point, pointB: Point): Point[] | null {
+    findIntersectionWithLineSegment(lineSegment: LineSegment): Point[] | null {
         const cx = this.center.x;
         const cy = this.center.y;
         const r = this.radius;
     
+        const pointA = lineSegment.start
+        const pointB = lineSegment.finish
         const x1 = pointA.x;
         const y1 = pointA.y;
         const x2 = pointB.x;

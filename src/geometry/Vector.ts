@@ -1,8 +1,8 @@
-const radiansToDegrees = (radians) => {
+const radiansToDegrees = (radians: number) => {
     return radians * (180/Math.PI)
 }
 
-const degreesToRadians = (degrees) => {
+const degreesToRadians = (degrees: number) => {
     return degrees/(180/Math.PI)
 }
 
@@ -39,6 +39,10 @@ class Vector {
         return this.x * otherVector.x + this.y * otherVector.y
     }
 
+    scalarMultiplication(scalar: number){
+        return new Vector(this.x * scalar, this.y * scalar)
+    }
+
     magnitude(){
         return Math.sqrt(this.x**2 + this.y**2)
     }
@@ -57,10 +61,11 @@ class Vector {
 
     reflect(normal: Vector): Vector{
         let angle = radiansToDegrees(normal.angleBetweenClockwise(this))
+        console.log(angle)
         if (angle < 0) {
           angle = 360 + angle
         }
-
+console.log(angle)
         if (angle > 90 && angle < 180) {
             // descubra -in e faça rotate (n, -in) clockwise
             const inverseI = new Vector(-this.x, -this.y)
@@ -74,6 +79,7 @@ class Vector {
             const reflexion = normal.rotate(-nInverseI)
             return reflexion
         } else {
+            console.log(angle, normal.versor(), this.versor())
             throw new Error("Angle between normal and vector is not in the expected range")
         }
     }
